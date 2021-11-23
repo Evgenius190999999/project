@@ -59,10 +59,115 @@ const test = "12.2px";
 console.log(parseInt(test));
 console.log(parseFloat(test));
 
+const option = {
+    name: 'test',
+    width: 1024,
+    height: 1024,
+    colors: {
+        border: 'black',
+        background: 'red'
+    },
+    makeTest: function() {
+        console.log('test');
+    }
+};
 
-function squareOfSum(a, b) {
-    let summsqrd = (a**2) + (2 * a * b) + (b**2);
-    return summsqrd;
+option.makeTest();
+
+const {border, background} = option.colors;
+console.log(border);
+
+console.log(Object.keys(option).length);
+
+//console.log(option.name);
+
+//delete option.name;
+
+//console.log(option);
+let counet = 0;
+for (let key in option) {
+    if (typeof(option[key]) === 'object') {
+        for (let i in option[key]) {
+            console.log(`Свойство ${i}, имеет значение ${option[key][i]}`);
+            counet++;
+        }
+    } else {
+        console.log(`Свойство ${key}, имеет значение ${option[key]}`);
+        counet++;
+    }
+    
+}
+console.log(counet);
+
+const array = [1,2,3,4,5];
+
+array.pop();
+array.push(7);
+
+for (let value of array) {
+    console.log(value);
 }
 
-squareOfSum(2,3);
+
+array.forEach(function(item, i, array) {
+    console.log(`${i}: ${item} Внутри массива ${array}`);
+});
+
+const string = prompt('', '');
+const products = string.split(', ');
+products.sort();
+console.log(products.join('; '));
+
+function comperaNum(a, b) {
+    return a-b;
+}
+
+
+
+function copy(mainObj) {
+    let objCopy = {};
+
+    let key;
+    for (key in mainObj) {
+        objCopy[key] = mainObj[key];
+    }
+    return objCopy;
+}
+
+const numberss = {
+    a: 2,
+    b: 5,
+    c: {
+        x: 7,
+        y: 4
+    }
+};
+
+const newNumbres = copy(numberss);
+
+newNumbres.a = 10;
+
+console.log(newNumbres);
+console.log(numberss);
+
+const add = {
+    d: 17,
+    e: 20
+};
+
+console.log(Object.assign(numberss, add));
+
+const oldArr = ['a','b','c'];
+const newArr = oldArr.slice();
+
+newArr[1] = 'dsakdl';
+console.log(newArr);
+console.log(oldArr);
+
+
+
+function squared(b) {
+	return (b * b);
+}
+
+squared(5);
