@@ -165,9 +165,3 @@ console.log(newArr);
 console.log(oldArr);
 
 
-
-function squared(b) {
-	return (b * b);
-}
-
-squared(5);
